@@ -1,6 +1,6 @@
 #include <iostream>
 #define MAX_LENGTH 1500
-#define MIN_LENGTH 250
+#define MIN_LENGTH 5
 
 using namespace std;
 using std::string;
@@ -29,7 +29,7 @@ and check if chars of the input text contain only - 0 or 1
 */
 bool checkChars(string inputText){
 
-    for(int i = 0; i < inputText.length(); i++){
+    for(int i = 0; unsigned(i) < unsigned(inputText.length()); i++){
         if(inputText.at(i) != '0' && inputText.at(i) != '1'){
             return false;
         }
