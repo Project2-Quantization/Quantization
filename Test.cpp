@@ -1,6 +1,6 @@
 #include <iostream>
 #define MAX_LENGTH 1500
-#define MIN_LENGTH 5
+#define MIN_LENGTH 250
 
 using namespace std;
 using std::string;
