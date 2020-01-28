@@ -4,64 +4,63 @@
 using std::string;
 
 //Declaration of functions.
-string ascii(string prev);
+string inputTxt();
+void outputTxt(string);
 
+//*******************************************************************************
+/*
+(1)
+Description: The main function.
+             The function calls to the quantization functions.
+
+*/
 int main(){
+
     Quantization *q = new Quantization();
     string divRes = "";
+    string str  = "";
 
+    str = inputTxt();
+    cout<< "STR: "<< str<< endl;
+
+    divRes = q->divAndMatch(str);
+    cout<<"The output: "<< divRes<<endl;
+
+    outputTxt(divRes);
+
+    q->linkedList->freeList(q->linkedList->head);
+    q->freeQuant(q);
+    return 0;
+}
+//*******************************************************************************
+/*
+(2)
+Description: The function reads the input file from the previous project into a string.
+*/
+string inputTxt(){
     ifstream myReadFile;
     string str;
 
     //READ the file from project 1.
-    myReadFile.open("text.txt");
+    myReadFile.open("binary_file.txt");
     if (myReadFile.is_open()) {
         while (!myReadFile.eof()) {
             myReadFile >> str;
         }
     }
     myReadFile.close();
-    cout<< "STR: "<< str<< endl;
-
-    cout<<"The output: "<< q->divAndMatch(str)<<endl;
-
-    q->linkedList->freeList(q->linkedList->head);
-    return 0;
+    return str;
 }
-
-string ascii(string prev)
-{
-    string temp;
-    int val, add;
-
-    for(int i=0; static_cast<int>(prev.length())>i; i++)
-    {
-        prev[i] = toupper(prev[i]);
-    }
-    add = 1;
-    for(int i=prev.length()-1; i>=0; i--)
-    {
-        val = (int)(prev[i])+add;
-        if (val> (int)('Z'))
-        {
-            prev[i] = 'A';
-            if (i == 0)
-            {
-                prev = 'A' + prev;
-            }
-        }
-        else
-        {
-            prev[i] = val;
-            break;
-        }
-    }
-    //return back to lower case character.
-    for(int i=0; static_cast<int>(prev.length())>i; i++)
-    {
-        prev[i] = tolower(prev[i]);
-    }
-    return prev;
+//*******************************************************************************
+/*
+(3).
+Description: The function creates the input of the next project.
+             The function writes the string of the AB values to the output file.
+*/
+void outputTxt(string str){
+    std::ofstream outfile ("str_from_quant.txt");
+    outfile << str << std::endl;
+    outfile.close();
 }
 
 
