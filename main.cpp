@@ -1,6 +1,8 @@
 #include <iostream> //For I/O.
 #include <string>   //For strings.
 #include "Quantization.cpp"
+#include "Test.cpp"
+
 using std::string;
 
 //Declaration of functions.
@@ -12,7 +14,6 @@ void outputTxt(string);
 (1)
 Description: The main function.
              The function calls to the quantization functions.
-
 */
 int main(){
 
@@ -23,6 +24,14 @@ int main(){
     str = inputTxt();
     cout<< "STR: "<< str<< endl;
 
+    //Input Validation.
+    Test *testString = new Test();
+    if(!testString->check(str)){
+        cout<< "ERROR input string from project1 invalid" <<endl;
+        return 1;
+    }
+
+    //The Quantization on valid input only.
     divRes = q->divAndMatch(str);
     cout<<"The output: "<< divRes<<endl;
 
@@ -62,5 +71,3 @@ void outputTxt(string str){
     outfile << str << std::endl;
     outfile.close();
 }
-
-
