@@ -3,7 +3,8 @@
 using namespace std;
 
 /*
-Represents a binary sub-string matching to a specific alphabetical value + points to the next node.
+Description:
+The class Represents a binary sub-string matching to a specific alphabetical value + points to the next node.
 */
 class Node{
     private:
@@ -12,17 +13,12 @@ class Node{
         Node * next;
 
     public:
-
- /*     void setAlphabetic(string alphabetic) { this->alphabetic = alphabetic; }
-        void setBinary(string binary) { this->binary = binary; }*/
         //Ctr.
         Node(string alphabetic, string binary)
         {
             this->alphabetic = alphabetic;
             this->binary = binary;
             this->next = NULL;
-
-            //cout<< this->alphabetic << this->binary << this->next;
         }
         //Getters.
         string getAlphabetic() { return alphabetic; }
@@ -35,7 +31,5 @@ class Node{
         }
 
 };
-
-
 
 
